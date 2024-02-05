@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "antd": "^5.14.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -22,5 +23,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "vite": "^5.0.8"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/PerpetuumG/minin_react-crypto_app.git",
+  "author": "PerpetuumG <perpetuumg@gmail.com>",
+  "license": "MIT"
 }
