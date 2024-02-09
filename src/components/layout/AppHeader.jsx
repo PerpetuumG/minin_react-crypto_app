@@ -18,14 +18,14 @@ const AppHeader = () => {
   const [select, setSelect] = useState(false);
   const [coin, setCoin] = useState(null);
   const [modal, setModal] = useState(false);
-  const [drawer, setDrawer] = useState(false);
+  const [drawer, setDrawer] = useState(true);
 
   const { crypto } = useCrypto();
 
   useEffect(() => {
     const keypress = event => {
       if (event.key === '/') {
-        setSelect(prevState => !prevState);
+        setSelect(prev => !prev);
       }
     };
     document.addEventListener('keypress', keypress);
@@ -45,8 +45,8 @@ const AppHeader = () => {
         }}
         open={select}
         onSelect={handleSelect}
-        onClick={() => setSelect(prevState => !prevState)}
-        value={'press / to open'}
+        onClick={() => setSelect(prev => !prev)}
+        value='press / to open'
         options={crypto.map(coin => ({
           label: coin.name,
           value: coin.id,
@@ -61,15 +61,21 @@ const AppHeader = () => {
       />
 
       <Button type='primary' onClick={() => setDrawer(true)}>
-        Primary Button
+        Add Asset
       </Button>
 
       <Modal open={modal} onCancel={() => setModal(false)} footer={null}>
         <CoinInfoModal coin={coin} />
       </Modal>
 
-      <Drawer width={600} title='Add Asset' onClose={() => setDrawer(false)} open={drawer}>
-        <AddAssetForm />
+      <Drawer
+        width={600}
+        title='Add Asset'
+        onClose={() => setDrawer(false)}
+        open={drawer}
+        destroyOnClose
+      >
+        <AddAssetForm onClose={() => setDrawer(false)} />
       </Drawer>
     </Layout.Header>
   );

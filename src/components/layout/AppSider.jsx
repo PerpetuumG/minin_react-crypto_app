@@ -1,8 +1,8 @@
-import { Card, Layout, List, Statistic, Typography, Tag } from 'antd';
+import { Layout, Card, Statistic, List, Typography, Tag } from 'antd';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
-import { capitalize } from '../../utils.js';
+import { capitalize } from '../../utils';
 import { useContext } from 'react';
-import CryptoContext from '../../context/crypto-context.jsx';
+import CryptoContext from '../../context/crypto-context';
 
 const siderStyle = {
   padding: '1rem',
@@ -23,11 +23,14 @@ const AppSider = () => {
             prefix={asset.grow ? <ArrowUpOutlined /> : <ArrowDownOutlined />}
             suffix='$'
           />
-
           <List
-            size={'small'}
+            size='small'
             dataSource={[
-              { title: 'Total Profit', value: asset.totalProfit, withTag: true },
+              {
+                title: 'Total Profit',
+                value: asset.totalProfit,
+                withTag: true,
+              },
               { title: 'Asset Amount', value: asset.amount, isPlain: true },
               // { title: 'Difference', value: asset.growPercent },
             ]}
